@@ -11,7 +11,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 public enum ServerManager {
 	instance;
 
-//	public final static ResourceTableManager rtm = new ResourceTableManager();
+//	//public final static ResourceTableManager rtm = new ResourceTableManager();
 //	public final static DLockManager dlm = new DLockManager(rtm);
 //	public static Map<String, LockRequest> requests = new HashMap<String, LockRequest>();
 	public static final List<String> servers = new ArrayList<String>();
