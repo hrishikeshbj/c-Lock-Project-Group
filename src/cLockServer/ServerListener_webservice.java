@@ -37,7 +37,7 @@ public class ServerListener {
   Request request;
 
 
-  // Return the list of todos to the user in the browser
+  // //Return the list of todos to the user in the browser
   @GET
   @Consumes(MediaType.APPLICATION_XML)
   @Produces(MediaType.APPLICATION_XML)
