@@ -29,7 +29,7 @@ public class cLockClient {
 		public static void main (String [] args){
 		serverURL = null;
 		user = null;
-	//	stpe.scheduleAtFixedRate(hb, 0, 60, TimeUnit.SECONDS);
+	//	//stpe.scheduleAtFixedRate(hb, 0, 60, TimeUnit.SECONDS);
 		ClientConfig config = new DefaultClientConfig();
 	    Client client = Client.create(config);
 	    WebResource service = client.resource(getBaseURI());
