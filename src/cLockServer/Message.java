@@ -2,6 +2,8 @@ package cLockServer;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+// webservice
+
 @XmlRootElement
 public class Message {
 	private String mId;
