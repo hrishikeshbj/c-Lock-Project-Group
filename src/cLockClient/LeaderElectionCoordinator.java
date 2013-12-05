@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
  * election to happen the leader Id is generated with fixed format by the leader
  * election coordinator to avoid any confusions.
  * 
- * @author Nachiket
+ * 
  * 
  */
 public class LeaderElectionCoordinator {
