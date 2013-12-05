@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Table manager for the cLock Engine. This class performs all the operations
+ * /Table manager for the cLock Engine. This class performs all the operations
  * associated with maintaining the database of resources on the server.
  * 
  * @author Nachiket
