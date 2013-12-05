@@ -10,7 +10,7 @@ import java.util.Map.Entry;
  * lock. This message is scheduled to work periodically using Scheduled Thread
  * Pool.
  * 
- * @author Nachiket
+ * 
  * 
  */
 public class HeartBeat implements Runnable {
