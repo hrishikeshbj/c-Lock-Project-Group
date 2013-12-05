@@ -1,0 +1,95 @@
+// TodoResource = Parser
+package cLockServer;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Request;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+import javax.xml.bind.JAXBElement;
+
+import cLockServer.ServerManager;
+import cLockServer.Message;
+
+/**
+ * This class defines the interface of the Server listener.
+ * The type of input/ output message is defined in this class.
+ * 
+ * @author Nachiket
+ *
+ */
+public class Parser {
+	@Context
+	UriInfo uriInfo;
+	@Context
+	Request request;
+	String id;
+
+	public Parser(UriInfo uriInfo, Request request, String id) {
+		this.uriInfo = uriInfo;
+		this.request = request;
+		this.id = id;
+	}
+
+	// Application integration
+	@GET
+	@Consumes(MediaType.APPLICATION_XML)
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	public Message getMessage(JAXBElement<Message> msg) {
+		Message m = msg.getValue();
+		ServerManager.doOperation(m);
+		if (msg == null)
+			throw new RuntimeException("Get: Todo with " + id + " not found");
+		return m;
+	}
+
+	// for the browser
+	@GET
+	@Produces(MediaType.TEXT_XML)
+	public Message getTodoHTML() {
+		Message todo = ServerManager.instance.getModel().get(id);
+		if (todo == null)
+			throw new RuntimeException("Get: Todo with " + id + " not found");
+		return todo;
+	}
+
+	@PUT
+	@Consumes(MediaType.APPLICATION_XML)
+	public Response putTodo(JAXBElement<Message> todo) {
+		Message c = todo.getValue();
+		return putAndGetResponse(c);
+	}
+
+	@POST
+	@Consumes(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_XML)
+	public Message postmessage(JAXBElement<Message> msg) {
+		Message m = msg.getValue();
+		return ServerManager.doOperation(m);
+	}
+
+	@DELETE
+	public void deleteTodo() {
+		Message c = ServerManager.instance.getModel().remove(id);
+		if (c == null)
+			throw new RuntimeException("Delete: Todo with " + id + " not found");
+	}
+
+	private Response putAndGetResponse(Message todo) {
+		Response res;
+		if (ServerManager.instance.getModel().containsKey(todo.getMId())) {
+			res = Response.noContent().build();
+		} else {
+			res = Response.created(uriInfo.getAbsolutePath()).build();
+		}
+		ServerManager.instance.getModel().put(todo.getMId(), todo);
+		return res;
+	}
+
+}
