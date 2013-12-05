@@ -1,7 +1,7 @@
 package cLockServer;
 
 /**
- * A container to hold a resource in terms of resource table manager. The
+ * //A container to hold a resource in terms of resource table manager. The
  * Resource table contains only 4 columns resource Id, resource name , creating
  * user and state. These 4 columns are fields of this class.
  * 
