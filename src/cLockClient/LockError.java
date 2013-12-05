@@ -4,7 +4,7 @@ package cLockClient;
  * Enumeration of the lock errors. These lock errors are used to specify the
  * status of the lock.
  * 
- * @author Nachiket
+ * 
  * 
  */
 public enum LockError {
