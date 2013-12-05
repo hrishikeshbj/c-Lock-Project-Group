@@ -1,7 +1,7 @@
 package cLockServer;
 
 /**
- * Enumeration class to specify an error. These errors are passed as parameters
+ * /Enumeration class to specify an error. These errors are passed as parameters
  * to operation performed and to used if severe.
  * 
  * @author Nachiket
